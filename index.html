@@ -195,120 +195,120 @@
         width: 100%; 
         text-align: center;
         box-sizing: border-box;
-        }
-    
-        .add-remove-buttons button:hover {
-            background-color: #b451ae; 
-            transform: translateY(-2px); 
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
-    
-        .add-remove-buttons button:active {
-            background-color: #b44fc4; 
-            transform: translateY(0); 
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-        }
-    
-        #boostscontainer,
-        #cosmeticscontainer,
-        #spinscontainer,
-        #misccontainer {
+    }
+
+    .add-remove-buttons button:hover {
+        background-color: #b451ae; 
+        transform: translateY(-2px); 
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .add-remove-buttons button:active {
+        background-color: #b44fc4; 
+        transform: translateY(0); 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    }
+
+    #boostscontainer,
+    #cosmeticscontainer,
+    #spinscontainer,
+    #misccontainer {
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    }
+
+    .item {
+        width: 250px; 
+        margin: 10px; 
+        text-align: center; 
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+        .quantity-container {
         display: flex;
-        justify-content: center; 
-        flex-wrap: wrap; 
-        gap: 20px; 
-        }
-    
-        .item {
-            width: 250px; 
-            margin: 10px; 
-            text-align: center; 
-        }
-        input[type="number"]::-webkit-outer-spin-button,
-        input[type="number"]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-    
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
-            .quantity-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px; 
-        }
-    
-        .quantity-container button {
-            background-color: #903cbd;
-            color: white;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 50px; 
-            text-align: center;
-        }
-    
-        .quantity-container button:hover {
-            background-color: #b451ae;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
-    
-        .quantity-container button:active {
-            background-color: #b44fc4;
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-    
-        .quantity-container input {
-            width: 80px;
-            text-align: center;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 8px;
-            border: 1px solid #444;
-            background-color: #333;
-            color: white;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px; 
+    }
+
+    .quantity-container button {
+        background-color: #903cbd;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 50px; 
+        text-align: center;
+    }
+
+    .quantity-container button:hover {
+        background-color: #b451ae;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .quantity-container button:active {
+        background-color: #b44fc4;
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .quantity-container input {
+        width: 80px;
+        text-align: center;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #444;
+        background-color: #333;
+        color: white;
+    }
+    .confirmation-message {
+        margin-left: 10px;
+        font-size: 14px;
+        color: #b4f4a8;  
+        font-weight: bold;
+        opacity: 0;
+        animation: fadeInOut 1.5s ease-out forwards;
+    }
+    .tooltip {
+    position: absolute;
+    bottom: 110%; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+        .tooltip.show {
+            opacity: 1;
+            visibility: visible;
         }
         .confirmation-message {
-            margin-left: 10px;
-            font-size: 14px;
-            color: #b4f4a8;  
-            font-weight: bold;
-            opacity: 0;
-            animation: fadeInOut 1.5s ease-out forwards;
-        }
-        .tooltip {
-        position: absolute;
-        bottom: 110%; 
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: rgba(0, 0, 0, 0.8);
-        color: white;
-        padding: 5px 8px;
-        border-radius: 5px;
-        font-size: 12px;
+        margin-left: 10px;
+        font-size: 14px;
+        color: #b4f4a8;  
+        font-weight: bold;
         opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-    
-            .tooltip.show {
-                opacity: 1;
-                visibility: visible;
-            }
-            .confirmation-message {
-            margin-left: 10px;
-            font-size: 14px;
-            color: #b4f4a8;  
-            font-weight: bold;
-            opacity: 0;
-            animation: fadeInOut 1.5s ease-out forwards;
-            white-space: pre-line;
+        animation: fadeInOut 1.5s ease-out forwards;
+        white-space: pre-line;
     }
 
     @keyframes fadeInOut {
@@ -444,7 +444,7 @@
             const addButton = itemDiv.querySelector('.add-remove-buttons button');
 
             const confirmationMessage = document.createElement('span');
-            confirmationMessage.textContent = `${name} added!`;
+            confirmationMessage.textContent = `\n${name} added!`;
             confirmationMessage.classList.add('confirmation-message');
             
             addButton.appendChild(confirmationMessage);
