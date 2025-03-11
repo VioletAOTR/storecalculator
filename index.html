@@ -3,166 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Budget Calculator</title>
+    <title>Gem Market Calculator</title>
     <style>
-
-label[for="budget"] {
-    font-size: 18px; 
-    font-weight: 600; 
-    margin-bottom: 10px; 
-    display: block; 
-    color: #9b4d96; 
-    letter-spacing: 1px; 
-}
-
-input[type="number"], input[type="text"] {
-    width: 100%; 
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #444; 
-    background-color: #444;
-    color: white;
-    margin-bottom: 20px;
-    transition: border 0.3s ease;
-    box-sizing: border-box; 
-}
-
-input[type="number"]#budget:focus {
-    outline: none;
-    border-color: #9b4d96; 
-    box-shadow: 0 0 5px rgba(155, 77, 150, 0.5); 
-}
-        body {
-            font-family: 'Helvetica Neue', sans-serif;
-            background-color: #111; 
-            color: white; 
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1c1c1c;
+            color: #e6e6e6;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        h1, h2 {
-            color: white;
-    background-color: #9b4d96; 
-    padding: 15px;
-    border-radius: 8px;
-    width: 35%;
-    text-align: center;
-    font-size: 32px;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
+
+        h1 {
+            font-size: 30px;
+            color: #9c4d96;
+            margin-bottom: 30px;
+            text-align: center;
         }
+
         .container {
-            width: 100%;
             max-width: 900px;
-            background-color: #242424; 
+            width: 100%;    
+            background-color: #2a2a2a;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
         }
+
         label {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 500;
             margin-bottom: 10px;
+            color: #ddd;
+            display: block;
         }
+
         input[type="number"], input[type="text"] {
             width: 100%;
             padding: 12px;
             font-size: 16px;
             border-radius: 8px;
-            border: 1px solid #444; 
-            background-color: #444;
+            border: 1px solid #444;
+            background-color: #333;
             color: white;
             margin-bottom: 20px;
             transition: border 0.3s ease;
+            text-align: center;
         }
-        input[type="number"]:focus, input[type="text"]:focus {
+
+        input[type="number"]:focus {
             outline: none;
-            border-color: #9b4d96; 
+            border-color: #9c4d96;
             box-shadow: 0 0 5px rgba(155, 77, 150, 0.5);
         }
-        .section h3 {
-            color: white;
-            font-size: 22px;
-            text-align: center;
-            margin-bottom: 10px;
-            padding: 5px 0;
-            background-color: #9b4d96;
-            border-radius: 5px;
+
+        .section {
+            margin-bottom: 20px;
         }
+
+        .section h3 {
+            font-size: 22px;
+            color: #9c4d96;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
         .grid-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; 
-    align-items: flex-start; 
-    margin-bottom: 20px;
-    position: relative;
-}
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 5px !important; 
+        }
 
-.item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    border-radius: 8px;
-    background-color: #444;
-    color: white;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    width: 180px; 
-    margin-bottom: 20px;
-}
+        .item {
+            background-color: #444;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.incomplete {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.item:hover {
-    background-color: #555;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        }
 
         .item label {
+            font-size: 16px;
             font-weight: 600;
-            color: #ffffff;
-            font-size: 14px;
-            margin-bottom: 8px;
+            color: #fff;
+            margin-bottom: 10px;
+            display: block;
         }
-        input[type="number"] {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #444; 
-    background-color: #444;
-    color: white;
-    margin-bottom: 20px;
-    transition: border 0.3s ease;
-    text-align: center; 
-}
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-input[type="number"] {
-    -moz-appearance: textfield; 
-}
-        .item input[type="number"]:focus {
-            border-color: #9b4d96;
-            box-shadow: 0 0 5px rgba(155, 77, 150, 0.5);
+        .item input[type="number"] {
+            width: 80%;
+            margin: 10px auto;
+            padding: 7px;
+            font-size: 16px;
+            border-radius: 6px;
+            background-color: #333;
+            color: #fff;
         }
+
         .button {
-            background-color: #9b4d96; 
+            background-color: #9c4d96;
             color: white;
             padding: 12px 20px;
             border: none;
@@ -170,168 +122,250 @@ input[type="number"] {
             font-size: 18px;
             cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
         }
+
         .button:hover {
-            background-color: #7b3686; 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background-color: #7b3686;
         }
+
         .checkout-box {
-    background: linear-gradient(135deg, #6a2c8c, #9b4d96);
-    padding: 30px 20px;
-    margin-top: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    color: white;
-    border: 1px solid #7b3686; 
-}
-
-.checkout-header {
-    font-size: 28px;
-    color: #ffffff;
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: 'Helvetica Neue', sans-serif;
-}
-
-.purchased-item {
-    background-color: #444;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-}
-
-.purchased-item:hover {
-    background-color: #555;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.remove-button {
-    background-color: #ff5722;
-    color: white;
-    padding: 6px 14px;
-    font-size: 14px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-}
-
-.remove-button:hover {
-    background-color: #d32f2f;
-}
-
-.message {
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-}
-
-.message.success {
-    color: #4caf50;
-}
-
-.message.error {
-    color: #ff5722;
-}
-
-.checkout-box .purchased-item .item-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.checkout-box .purchased-item .item-details span {
-    font-size: 16px;
-}
-
-.checkout-box .purchased-item .item-details span strong {
-    font-size: 18px;
-    color: #fff;
-}
-        .add-remove-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .add-remove-buttons button {
-            padding: 8px 16px;
-            font-size: 14px;
-            background-color: #9b4d96;
+            background-color: #3a3a3a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
             color: white;
+        }
+
+        .checkout-box .checkout-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #9c4d96;
+        }
+
+        .checkout-box .purchased-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .checkout-box .purchased-item button {
+            background-color: #f44336;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .checkout-box .purchased-item button:hover {
+            background-color: #e53935;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .message.success {
+            color: #4caf50;
+        }
+
+        .message.error {
+            color: #ff5722;
+        }
+
+        .add-remove-buttons button {
+        background-color: #903cbd; 
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%; 
+        text-align: center;
+        box-sizing: border-box;
+        }
+    
+        .add-remove-buttons button:hover {
+            background-color: #b451ae; 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+    
+        .add-remove-buttons button:active {
+            background-color: #b44fc4; 
+            transform: translateY(0); 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        }
+    
+        #boostscontainer,
+        #cosmeticscontainer,
+        #spinscontainer,
+        #misccontainer {
+        display: flex;
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 20px; 
+        }
+    
+        .item {
+            width: 250px; 
+            margin: 10px; 
+            text-align: center; 
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+            .quantity-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px; 
+        }
+    
+        .quantity-container button {
+            background-color: #903cbd;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            width: 50px; 
+            text-align: center;
         }
-        .add-remove-buttons button:hover {
-            background-color: #7b3686;
+    
+        .quantity-container button:hover {
+            background-color: #b451ae;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
-        .remove-button {
-    background-color: #9b4d96;
-    color: white;
-    padding: 8px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+    
+        .quantity-container button:active {
+            background-color: #b44fc4;
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        .quantity-container input {
+            width: 80px;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: white;
+        }
+        .confirmation-message {
+            margin-left: 10px;
+            font-size: 14px;
+            color: #b4f4a8;  
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeInOut 1.5s ease-out forwards;
+        }
+        .tooltip {
+        position: absolute;
+        bottom: 110%; 
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+            .tooltip.show {
+                opacity: 1;
+                visibility: visible;
+            }
+            .confirmation-message {
+            margin-left: 10px;
+            font-size: 14px;
+            color: #b4f4a8;  
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeInOut 1.5s ease-out forwards;
+            white-space: pre-line;
+    }
 
-.remove-button:hover {
-    background-color: #7b3686; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+    @keyframes fadeInOut {
+        0% {
+            opacity: 0;
+        }
+        30% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+
+
     </style>
 </head>
 <body>
+    <h1>Violet's Gem Market<br><span style="font-size: 18px; color: #9c4d96;">discord.gg/omgviolet</span></h1>
 
-    <h1>Violet's Gem Calculator<br><br>discord.gg/omgviolet</h1>
     <div class="container">
-        <label for="budget">Enter your budget (Gems): </label>
-        <input type="number" id="budget" name="budget" min="0" value="0" oninput="calculateitems()">
-    
+        <label for="budget">Enter your budget (Gems):</label>
+        <input type="number" id="budget" name="budget" min="0" value="0" oninput="calculatetotal()">
+
         <div class="section">
             <h3>Boosts</h3>
             <div class="grid-container" id="boostscontainer"></div>
         </div>
-    
+
         <div class="section">
             <h3>Cosmetics</h3>
             <div class="grid-container" id="cosmeticscontainer"></div>
         </div>
-    
+
         <div class="section">
             <h3>Spins</h3>
             <div class="grid-container" id="spinscontainer"></div>
         </div>
-    
+
         <div class="section">
             <h3>Miscellaneous</h3>
             <div class="grid-container" id="misccontainer"></div>
         </div>
-    
-        <button class="button" onclick="calculatetotal()">Calculate</button>
-    
+
+        <button class="button" onclick="calculatetotal()">Calculate Total</button>
+
         <div class="checkout-box">
             <div class="checkout-header">Checkout</div>
-            <div id="purchaseditems">
-            </div>
+            <div id="purchaseditems"></div>
             <div id="budgetmessage" class="message"></div>
         </div>
     </div>
-    
+
     <script>
         const items = [
             { name: "Scout Fashion", price: 799, category: 'cosmetics' },
@@ -357,111 +391,116 @@ input[type="number"] {
             { name: "250 Spins", price: 25000, category: 'spins' },
             { name: "500 Spins", price: 50000, category: 'spins' },
         ];
-    
+
         function formatnumber(number) {
             return number.toLocaleString();
         }
-    
-        function calculateitems() {
-            const boostscontainer = document.getElementById('boostscontainer');
-            const cosmeticscontainer = document.getElementById('cosmeticscontainer');
-            const spinscontainer = document.getElementById('spinscontainer');
-            const misccontainer = document.getElementById('misccontainer');
-            boostscontainer.innerHTML = "";
-            cosmeticscontainer.innerHTML = "";
-            spinscontainer.innerHTML = "";
-            misccontainer.innerHTML = "";
-    
-            items.forEach(item => {
-                const itemdiv = document.createElement('div');
-                itemdiv.classList.add('item');
-                itemdiv.innerHTML = `
-                    <label for="${item.name}">
-                        ${item.name}<br>
-                        (${formatnumber(item.price)} Gems)
-                    </label>
-                    <input type="number" id="${item.name}" name="${item.name}" min="0" value="0">
-                    <div class="add-remove-buttons">
-                        <button onclick="addtocheckout('${item.name}', ${item.price})">Add</button>
-                    </div>
-                `;
-                
-                if (item.category === 'boosts') {
-                    boostscontainer.appendChild(itemdiv);
-                } else if (item.category === 'cosmetics') {
-                    cosmeticscontainer.appendChild(itemdiv);
-                } else if (item.category === 'spins') {
-                    spinscontainer.appendChild(itemdiv);
-                } else {
-                    misccontainer.appendChild(itemdiv);
-                }
+
+        function renderitems() {
+            const categories = ['boosts', 'cosmetics', 'spins', 'misc'];
+            categories.forEach(category => {
+                const container = document.getElementById(`${category}container`);
+                const categoryitems = items.filter(item => item.category === category);
+                categoryitems.forEach(item => {
+                    const itemdiv = document.createElement('div');
+                    itemdiv.classList.add('item');
+                    itemdiv.innerHTML = `
+                        <label>${item.name}<br>(${formatnumber(item.price)} Gems)</label>
+                        <div class="quantity-container">
+                            <button class="minus" onclick="updatequantity('${item.name}', -1)">-</button>
+                            <input type="number" id="${item.name}" name="${item.name}" min="0" value="0">
+                            <button class="plus" onclick="updatequantity('${item.name}', 1)">+</button>
+                        </div>
+                        <div class="add-remove-buttons">
+                            <button onclick="addtocheckout('${item.name}', ${item.price})">Add</button>
+                        </div>
+                    `;
+                    container.appendChild(itemdiv);
+                });
             });
-        }
-    
+}
+
+
         const checkoutdata = {};
-    
+
         function addtocheckout(name, price) {
             const quantity = parseInt(document.getElementById(name).value) || 0;
             if (quantity <= 0) return;
-    
+
             if (checkoutdata[name]) {
-                checkoutdata[name].quantity += quantity;  
+                checkoutdata[name].quantity += quantity;
             } else {
-                checkoutdata[name] = {
-                    price: price,
-                    quantity: quantity
-                };
+                checkoutdata[name] = { price, quantity };
             }
-    
+
             updatecheckoutdisplay();
             calculatetotal();
+            // confirmation message stuff HEADACHE
+            const itemDiv = document.getElementById(name).closest('.item');
+                
+            if (!itemDiv) return;
+
+           
+            const addButton = itemDiv.querySelector('.add-remove-buttons button');
+
+            const confirmationMessage = document.createElement('span');
+            confirmationMessage.textContent = `${name} added!`;
+            confirmationMessage.classList.add('confirmation-message');
+            
+            addButton.appendChild(confirmationMessage);
+            setTimeout(() => {
+                confirmationMessage.remove();
+            }, 1500);
+                    
         }
-    
+
         function removefromcheckout(name) {
-            delete checkoutdata[name];  
+            delete checkoutdata[name];
             updatecheckoutdisplay();
             calculatetotal();
         }
-    
+
+            function updatequantity(name, change) {
+            const input = document.getElementById(name);
+            let currentValue = parseInt(input.value) || 0;
+            currentValue += change;
+            if (currentValue < 0) currentValue = 0;
+            input.value = currentValue;
+            calculatetotal(); 
+        }
         function updatecheckoutdisplay() {
             const purchaseditemscontainer = document.getElementById('purchaseditems');
-            purchaseditemscontainer.innerHTML = '';  
-    
-            for (const [name, data] of Object.entries(checkoutdata)) {
-                const totalvalue = data.price * data.quantity;
-                const purchaseddiv = document.createElement('div');
-                purchaseddiv.id = `purchased-${name}`;
-                purchaseddiv.classList.add('purchased-item');
-                purchaseddiv.innerHTML = `
-                    ${name} (x${data.quantity}) - ${formatnumber(totalvalue)} Gems
-                    <button class="remove-button" onclick="removefromcheckout('${name}')">Remove</button>
+            purchaseditemscontainer.innerHTML = '';
+            Object.entries(checkoutdata).forEach(([name, data]) => {
+                const itemdiv = document.createElement('div');
+                itemdiv.classList.add('purchased-item');
+                itemdiv.innerHTML = `
+                    ${name} (x${data.quantity}) - ${formatnumber(data.price * data.quantity)} Gems
+                    <button onclick="removefromcheckout('${name}')">Remove</button>
                 `;
-                purchaseditemscontainer.appendChild(purchaseddiv);
-            }
+                purchaseditemscontainer.appendChild(itemdiv);
+            });
         }
-    
+
         function calculatetotal() {
             const budget = parseInt(document.getElementById('budget').value) || 0;
             let totalcost = 0;
-    
-            for (const data of Object.values(checkoutdata)) {
-                totalcost += data.price * data.quantity;
-            }
-    
+            Object.values(checkoutdata).forEach(data => totalcost += data.price * data.quantity);
+
             const budgetmessage = document.getElementById('budgetmessage');
             const remaininggems = budget - totalcost;
-    
+
             if (totalcost <= budget) {
                 budgetmessage.className = 'message success';
-                budgetmessage.innerHTML = `You are within your budget! Total: ${formatnumber(totalcost)} Gems. Total gems remaining: ${formatnumber(remaininggems)} Gems.`;
+                budgetmessage.innerHTML = `Total: ${formatnumber(totalcost)} Gems. Remaining: ${formatnumber(remaininggems)} Gems.`;
             } else {
                 budgetmessage.className = 'message error';
-                budgetmessage.innerHTML = `You are over your budget by ${formatnumber(totalcost - budget)} Gems! Total: ${formatnumber(totalcost)} Gems. Total gems remaining: ${remaininggems < 0 ? 0 : formatnumber(remaininggems)} Gems.`;
+                budgetmessage.innerHTML = `Over budget by ${formatnumber(totalcost - budget)} Gems. Total: ${formatnumber(totalcost)} Gems.`;
             }
         }
-    
-        calculateitems();
+
+        renderitems();
     </script>
-    
 </body>
+
 </html>
