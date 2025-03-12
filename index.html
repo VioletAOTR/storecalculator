@@ -328,7 +328,7 @@
             <h3>Miscellaneous</h3>
             <div class="grid-container" id="misccontainer"></div>
          </div>
-         <button class="button" onclick="calculatetotal()">Calculate Total</button>
+         <button class="button" onclick="generatebasketlink()">Copy Link</button>
          <!-- This shit is basically redundant but who cares -->
          <div class="checkout-box">
             <div class="checkout-header">Checkout</div>
@@ -367,6 +367,20 @@
          }
          
          function renderitems() {
+            window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const basketData = urlParams.get("basket");
+            if (basketData) {
+                try {
+                    const decodedBasket = JSON.parse(decodeURIComponent(basketData));
+                    Object.assign(checkoutdata, decodedBasket);
+                    updatecheckoutdisplay();
+                    calculatetotal();
+                } catch (e) {
+                    console.error("Failed to load basket from URL", e);
+                }
+            }
+         };
              const categories = ['boosts', 'cosmetics', 'spins', 'misc'];
              categories.forEach(category => {
                  const container = document.getElementById(`${category}container`);
@@ -421,10 +435,11 @@
              setTimeout(() => {
                  confirmationMessage.remove();
              }, 1500);
-                 addButton.style.backgroundColor = '#b4f4a8';
-             setTimeout(() => {
-                 addButton.style.backgroundColor = '#903cbd'; 
-             }, 300);
+                addButton.style.transition = 'border-color 0.3s ease-in-out';
+                addButton.style.border = '2px solid rgba(180, 244, 168, 1)';
+                setTimeout(() => {
+                    addButton.style.border = '2px solid rgba(76, 175, 80, 0)';
+                }, 500);
                      
          }
          
@@ -451,6 +466,15 @@
                  input.value = currentValue;
                  calculatetotal(); 
              }   
+         
+             function generatebasketlink() {
+            const encodedbasket = encodeURIComponent(JSON.stringify(checkoutdata));
+            const shareablelink = `${window.location.origin}${window.location.pathname}?basket=${encodedbasket}`;
+            navigator.clipboard.writeText(shareablelink).then(() => {
+                alert("Basket link copied to clipboard!");
+            });
+            }
+         
          function updatecheckoutdisplay() {
              const purchaseditemscontainer = document.getElementById('purchaseditems');
              purchaseditemscontainer.innerHTML = '';
